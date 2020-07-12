@@ -1,0 +1,25 @@
+{
+    "bracketSpacing": false,
+    "singleQuote": true,
+    "tabWidth": 4,
+    "overrides": [
+        {
+            "files": "*.json",
+            "options": {
+                "tabWidth": 2
+            }
+        },
+        {
+            "files": "*.scss",
+            "options": {
+                "singleQuote": false
+            }
+        },
+        {
+            "files": [".babelrc", ".eslintrc", ".postcssrc", ".prettierrc"],
+            "options": {
+                "parser": "json"
+            }
+        }
+    ]
+}

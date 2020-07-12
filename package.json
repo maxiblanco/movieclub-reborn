@@ -1,0 +1,50 @@
+{
+  "name": "react-parcel-app",
+  "version": "0.0.1",
+  "description": "Simple React + Parcel set up.",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel src/index.html --open",
+    "build": "parcel build src/index.html",
+    "test": "jest",
+    "prettier": "prettier --check \"**/*.*\"",
+    "prettier:write": "prettier --write \"**/*.*\"",
+    "lint": "eslint 'src/**/*.{js,jsx}'",
+    "lint:fix": "npm run lint -- --fix",
+    "stylelint": "stylelint 'src/**/*.scss'",
+    "stylelint:fix": "npm run stylelint -- --fix"
+  },
+  "engines": {
+    "node": ">=10.16.1",
+    "npm": ">=6.9.0"
+},
+  "devDependencies": {
+    "@babel/core": "7.10.2",
+    "@babel/plugin-transform-runtime": "7.10.1",
+    "@babel/preset-env": "7.10.2",
+    "@babel/preset-react": "7.10.1",
+    "@babel/runtime-corejs3": "7.10.2",
+    "@spothero/eslint-config": "1.9.0",
+    "@spothero/stylelint-config": "1.4.0",
+    "@testing-library/jest-dom": "5.10.1",
+    "@testing-library/react": "10.3.0",
+    "babel-jest": "26.0.1",
+    "jest": "26.0.1",
+    "jest-transform-stub": "2.0.0",
+    "node-sass": "4.14.1",
+    "parcel-bundler": "1.12.4",
+    "prettier": "2.0.5",
+    "react-hot-loader": "4.12.21",
+    "sass": "1.26.8"
+  },
+  "dependencies": {
+    "autoprefixer": "9.8.0",
+    "core-js": "3.6.5",
+    "postcss-modules": "2.0.0",
+    "prop-types": "15.7.2",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-router-dom": "5.2.0",
+    "regenerator-runtime": "0.13.5"
+  }
+}
