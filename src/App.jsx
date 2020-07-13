@@ -4,7 +4,7 @@ import HomeView from '/views/Home.jsx';
 import './App.scss';
 
 const App = () => {
-    return <HomeView />;
+  return <HomeView />;
 };
 
 export default App;
