@@ -23,7 +23,7 @@
     "@babel/plugin-transform-runtime": "7.10.1",
     "@babel/preset-env": "7.10.2",
     "@babel/preset-react": "7.10.1",
-    "@babel/runtime-corejs3": "7.10.2",
+    "@babel/runtime-corejs3": "^7.10.2",
     "@spothero/eslint-config": "1.9.0",
     "@spothero/stylelint-config": "1.4.0",
     "@testing-library/jest-dom": "5.10.1",
@@ -51,6 +51,6 @@
     "react-dom": "16.13.1",
     "react-icons": "^3.10.0",
     "react-router-dom": "5.2.0",
-    "regenerator-runtime": "0.13.5"
+    "regenerator-runtime": "^0.13.5"
   }
 }

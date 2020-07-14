@@ -1,5 +1,11 @@
 import React, {useContext, useEffect} from 'react';
 import {MovieContext} from '/context/movieContext';
+// Chakra UI
+import {Box, SimpleGrid} from '@chakra-ui/core';
+// Components
+import MovieCard from '../MovieCard';
+import Navbar from '../Navbar';
+
 const Home = () => {
   const {movies, loading, lang, getMovies} = useContext(MovieContext);
 
@@ -10,14 +16,14 @@ const Home = () => {
   }, [lang]);
 
   return (
-    <div className="App">
-      {movies.map((movie) => (
-        <div key={movie.id}>
-          <h2>{movie.title}</h2>
-          <p>{movie.overview}</p>
-        </div>
-      ))}
-    </div>
+    <Box mx="auto" maxW="90%">
+      <Navbar />
+      <SimpleGrid minChildWidth="250px" spacing="40px">
+        {movies.map(({id, title, poster_path: posterPath}) => (
+          <MovieCard key={id} title={title} posterPath={posterPath} />
+        ))}
+      </SimpleGrid>
+    </Box>
   );
 };
 

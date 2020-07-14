@@ -1,5 +1,10 @@
 import React from 'react';
-import {ThemeProvider, CSSReset, theme} from '@chakra-ui/core';
+import {
+  ThemeProvider,
+  ColorModeProvider,
+  CSSReset,
+  theme,
+} from '@chakra-ui/core';
 
 // Let's say you want to add custom colors
 const customTheme = {
@@ -16,8 +21,10 @@ const customTheme = {
 
 const Theme = ({children}) => (
   <ThemeProvider theme={customTheme}>
-    <CSSReset />
-    {children}
+    <ColorModeProvider>
+      <CSSReset />
+      {children}
+    </ColorModeProvider>
   </ThemeProvider>
 );
 
