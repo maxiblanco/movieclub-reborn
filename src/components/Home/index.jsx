@@ -1,29 +1,38 @@
-import React, {useContext, useEffect} from 'react';
-import {MovieContext} from '/context/movieContext';
+import React from 'react';
 // Chakra UI
-import {Box, SimpleGrid} from '@chakra-ui/core';
+import {Flex, Box, Grid, Heading, Text, Skeleton} from '@chakra-ui/core';
 // Components
 import MovieCard from '../MovieCard';
-import Navbar from '../Navbar';
 
-const Home = () => {
-  const {movies, loading, lang, getMovies} = useContext(MovieContext);
-
-  useEffect(() => {
-    getMovies();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [lang]);
-
+const Home = ({movies, loading}) => {
   return (
-    <Box mx="auto" maxW="90%">
-      <Navbar />
-      <SimpleGrid minChildWidth="250px" spacing="40px">
-        {movies.map(({id, title, poster_path: posterPath}) => (
+    <Grid
+      templateColumns={[
+        'repeat(auto-fill, minmax(150px, 1fr) )',
+        'repeat(auto-fill, minmax(200px, 1fr) )',
+        'repeat(auto-fill, minmax(250px, 1fr) )',
+      ]}
+      gap="40px"
+    >
+      <Flex
+        direction="column"
+        justify="center"
+        align="start"
+        gridArea="1 / 1 / span 1 / span 2"
+      >
+        <Heading textTransform="uppercase" size="xl">
+          New & Upcoming <br /> Movies
+        </Heading>
+        <Text pt={6} fontWeight="bold">
+          Emotional, exciting and unexpected.
+        </Text>
+      </Flex>
+      {movies.map(({id, title, poster_path: posterPath}) => (
+        <Skeleton isLoaded={!loading} key={id}>
           <MovieCard key={id} title={title} posterPath={posterPath} />
-        ))}
-      </SimpleGrid>
-    </Box>
+        </Skeleton>
+      ))}
+    </Grid>
   );
 };
 
