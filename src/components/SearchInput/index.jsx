@@ -10,8 +10,15 @@ import {
 const SearchInput = () => {
   return (
     <InputGroup>
-      <Input placeholder="Search..." />
-      <InputRightElement children={<IconButton icon="search" />} />
+      <Input
+        width="lg"
+        _focusWithin={{width: 'xl'}}
+        bg="black"
+        placeholder="Search..."
+      />
+      <InputRightElement
+        children={<IconButton icon="search" color="white" bg="none" />}
+      />
     </InputGroup>
   );
 };
