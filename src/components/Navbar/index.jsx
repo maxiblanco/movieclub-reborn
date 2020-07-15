@@ -1,9 +1,19 @@
 import React from 'react';
 // Chakra UI
-import {Flex, PseudoBox, Box, Heading, Text, IconButton} from '@chakra-ui/core';
+import {
+  Flex,
+  PseudoBox,
+  Box,
+  Heading,
+  Text,
+  IconButton,
+  Image,
+} from '@chakra-ui/core';
 import {FaFacebookF, FaTwitter, FaYoutube} from 'react-icons/fa';
 // Components
 import SearchInput from '../SearchInput';
+// Assets
+import MovieLogo from '../../assets/MovieclubLogo.png';
 
 const Navbar = () => {
   return (
@@ -14,7 +24,10 @@ const Navbar = () => {
       justify="space-between"
       direction={['column', 'column', 'row']}
     >
-      <Heading textTransform="uppercase">Movieclub</Heading>
+      <Heading textTransform="uppercase" my="auto">
+        <Image src={MovieLogo} display="inline" width="50px" />
+        Movieclub
+      </Heading>
       <Flex width="300px" align="center" justify="space-between">
         <PseudoBox
           as="button"
@@ -22,7 +35,7 @@ const Navbar = () => {
           _hover={{borderBottom: 'solid 0.2rem'}}
         >
           <Text textTransform="uppercase">Movies</Text>
-          {/* TODO: Switch all to Links to their view */}
+          {/* TODO: Switch all to Links of their view */}
         </PseudoBox>
         <PseudoBox
           as="button"
@@ -39,7 +52,9 @@ const Navbar = () => {
           <Text textTransform="uppercase">Animation</Text>
         </PseudoBox>
       </Flex>
+
       <SearchInput />
+
       <Flex wrap="no-wrap">
         <IconButton color="white" bg="none" icon={FaFacebookF} />
         <IconButton color="white" bg="none" icon={FaTwitter} />
