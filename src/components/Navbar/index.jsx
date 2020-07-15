@@ -7,26 +7,44 @@ import SearchInput from '../SearchInput';
 
 const Navbar = () => {
   return (
-    <Flex textTransform="uppercase" align="center" justify="space-between">
-      <Heading>Movieclub</Heading>
-      <Flex width="300px" justify="space-between">
-        <PseudoBox>
-          <Text>Movies</Text>
+    <Flex
+      position="relative"
+      zIndex={1}
+      align="center"
+      justify="space-between"
+      direction={['column', 'column', 'row']}
+    >
+      <Heading textTransform="uppercase">Movieclub</Heading>
+      <Flex width="300px" align="center" justify="space-between">
+        <PseudoBox
+          as="button"
+          borderBottom="solid 0.2rem rgba(0,0,0,0)"
+          _hover={{borderBottom: 'solid 0.2rem'}}
+        >
+          <Text textTransform="uppercase">Movies</Text>
           {/* TODO: Switch all to Links to their view */}
         </PseudoBox>
-        <PseudoBox>
-          <Text>Series</Text>
+        <PseudoBox
+          as="button"
+          borderBottom="solid 0.2rem rgba(0,0,0,0)"
+          _hover={{borderBottom: 'solid 0.2rem'}}
+        >
+          <Text textTransform="uppercase">Series</Text>
         </PseudoBox>
-        <PseudoBox>
-          <Text>Animation</Text>
+        <PseudoBox
+          as="button"
+          borderBottom="solid 0.2rem rgba(0,0,0,0)"
+          _hover={{borderBottom: 'solid 0.2rem'}}
+        >
+          <Text textTransform="uppercase">Animation</Text>
         </PseudoBox>
       </Flex>
       <SearchInput />
-      <Box>
-        <IconButton icon={FaFacebookF} />
-        <IconButton icon={FaTwitter} />
-        <IconButton icon={FaYoutube} />
-      </Box>
+      <Flex wrap="no-wrap">
+        <IconButton color="white" bg="none" icon={FaFacebookF} />
+        <IconButton color="white" bg="none" icon={FaTwitter} />
+        <IconButton color="white" bg="none" icon={FaYoutube} />
+      </Flex>
     </Flex>
   );
 };
