@@ -45,7 +45,14 @@ const HomeView = () => {
       </Box>
 
       {/* TODO: Fix grid to overlay image */}
-      <Box maxW="90%" mx="auto" position="relative" zIndex={1} mt="-5rem">
+      <Box
+        maxW="90%"
+        mx="auto"
+        position="relative"
+        zIndex={1}
+        mt="-5rem"
+        mb="2rem"
+      >
         <Home movies={movies} loading={loading} />
       </Box>
       <Footer />
