@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {motion} from 'framer-motion';
 // Chakra UI
 import {
   IconButton,
@@ -7,19 +8,36 @@ import {
   InputRightElement,
 } from '@chakra-ui/core';
 
+const inputAnimation = {
+  focused: {
+    scaleX: 1.2,
+  },
+  notFocused: {
+    scaleX: 1,
+  },
+};
+
 const SearchInput = () => {
+  const [isFocused, setFocused] = useState(false);
+
   return (
-    <InputGroup>
-      <Input
-        width="lg"
-        _focusWithin={{width: 'xl'}}
-        bg="black"
-        placeholder="Search..."
-      />
-      <InputRightElement
-        children={<IconButton icon="search" color="white" bg="none" />}
-      />
-    </InputGroup>
+    <motion.div
+      variants={inputAnimation}
+      animate={isFocused ? 'focused' : 'notFocused'}
+    >
+      <InputGroup>
+        <Input
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
+          width="lg"
+          bg="black"
+          placeholder="Search..."
+        />
+        <InputRightElement
+          children={<IconButton icon="search" color="white" bg="none" />}
+        />
+      </InputGroup>
+    </motion.div>
   );
 };
 
