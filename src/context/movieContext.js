@@ -24,7 +24,7 @@ export const MovieContext = createContext(initialState);
 export const MovieProvider = ({ children }) => {
   const [state, dispatch] = useReducer(movieReducer, initialState);
   const url = 'https://api.themoviedb.org/3';
-  const key = process.env.API_KEY || '6eedebcb4636fb0c1d5b61c087044a69'
+  const key = process.env.API_KEY || '6eedebcb4636fb0c1d5b61c087044a69';
 
   // Actions
 

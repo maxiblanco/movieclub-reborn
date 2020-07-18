@@ -1,19 +1,22 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { MovieContext } from '/context/movieContext';
 // Chakra UI
-import { Box, Image, Heading } from '@chakra-ui/core';
+import { Box, Image, Heading, Flex } from '@chakra-ui/core';
 // Components
 import Home from '/components/Home';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import FeaturedHero from '../components/FeaturedHero';
 
 const HomeView = () => {
   const { movies, loading, lang, getMovies } = useContext(MovieContext);
+  const [featured, setFeatured] = useState(null);
 
   useEffect(() => {
     getMovies();
+    setFeatured(movies[0]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [movies]);
 
   return (
     <Box bg="black" color="gray.50">
@@ -31,7 +34,9 @@ const HomeView = () => {
         <Box pt={4}>
           <Navbar />
         </Box>
-
+        <Flex w="100%" h="100%" align="center" justify="flex-end" mt="-2rem">
+          {featured && <FeaturedHero featured={featured} />}
+        </Flex>
       </Box>
 
       <Box
@@ -42,7 +47,6 @@ const HomeView = () => {
         mt="-5rem"
         mb="2rem"
       >
-
         <Home movies={movies} loading={loading} />
       </Box>
       <Footer />
