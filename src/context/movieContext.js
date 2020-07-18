@@ -1,4 +1,4 @@
-import React, {createContext, useReducer} from 'react';
+import React, { createContext, useReducer } from 'react';
 import movieReducer from './movieReducer';
 
 const initialState = {
@@ -21,17 +21,17 @@ const initialState = {
 
 export const MovieContext = createContext(initialState);
 
-export const MovieProvider = ({children}) => {
+export const MovieProvider = ({ children }) => {
   const [state, dispatch] = useReducer(movieReducer, initialState);
   const url = 'https://api.themoviedb.org/3';
-  const key = process.env.API_KEY;
+  const key = process.env.API_KEY || '6eedebcb4636fb0c1d5b61c087044a69'
 
   // Actions
 
   // Set loading
 
   const setLoading = () => {
-    dispatch({type: 'SET_LOADING'});
+    dispatch({ type: 'SET_LOADING' });
   };
 
   // Get movies for home page
@@ -41,9 +41,9 @@ export const MovieProvider = ({children}) => {
       `${url}/movie/now_playing?api_key=${key}&language=${state.lang}&page=1`
     );
 
-    const {results} = await res.json();
+    const { results } = await res.json();
 
-    dispatch({type: 'GET_MOVIES', payload: results});
+    dispatch({ type: 'GET_MOVIES', payload: results });
   };
 
   // Get Single Movie Details
@@ -57,7 +57,7 @@ export const MovieProvider = ({children}) => {
 
     const data = await res.json();
 
-    dispatch({type: 'GET_MOVIE_INFO', payload: data});
+    dispatch({ type: 'GET_MOVIE_INFO', payload: data });
   };
 
   // Get trailer for a current movie
@@ -67,15 +67,15 @@ export const MovieProvider = ({children}) => {
       `${url}/movie/${id}/videos?api_key=${key}&language=${state.lang}`
     );
 
-    const {results} = await res.json();
+    const { results } = await res.json();
 
-    dispatch({type: 'GET_MOVIE_TRAILER', payload: results});
+    dispatch({ type: 'GET_MOVIE_TRAILER', payload: results });
   };
 
   // Clean up function for a trailer state
 
   const cleanUpTrailer = () => {
-    dispatch({type: 'CLEAN_UP_TRAILER'});
+    dispatch({ type: 'CLEAN_UP_TRAILER' });
   };
 
   // Get screenshots for current movie
@@ -84,9 +84,9 @@ export const MovieProvider = ({children}) => {
     setLoading();
 
     const res = await fetch(`${url}/movie/${id}/images?api_key=${key}`);
-    const {backdrops} = await res.json();
+    const { backdrops } = await res.json();
 
-    dispatch({type: 'GET_SCREENSHOTS', payload: backdrops});
+    dispatch({ type: 'GET_SCREENSHOTS', payload: backdrops });
   };
 
   // Get reviews for current movie
@@ -97,9 +97,9 @@ export const MovieProvider = ({children}) => {
     const res = await fetch(
       `${url}/movie/${id}/reviews?api_key=${key}&language=${state.lang}`
     );
-    const {results} = await res.json();
+    const { results } = await res.json();
 
-    dispatch({type: 'GET_REVIEWS', payload: results});
+    dispatch({ type: 'GET_REVIEWS', payload: results });
   };
 
   // Get similar movies
@@ -111,9 +111,9 @@ export const MovieProvider = ({children}) => {
       `${url}/movie/${id}/similar?api_key=${key}&language=${state.lang}`
     );
 
-    const {results} = await res.json();
+    const { results } = await res.json();
 
-    dispatch({type: 'GET_SIMILAR_MOVIES', payload: results});
+    dispatch({ type: 'GET_SIMILAR_MOVIES', payload: results });
   };
 
   // Get cast of the movie
@@ -124,7 +124,7 @@ export const MovieProvider = ({children}) => {
     const response = await fetch(`${url}/movie/${id}/credits?api_key=${key}`);
     const data = await response.json();
 
-    dispatch({type: 'GET_MOVIE_CAST', payload: data});
+    dispatch({ type: 'GET_MOVIE_CAST', payload: data });
   };
 
   // Get person info
@@ -138,7 +138,7 @@ export const MovieProvider = ({children}) => {
 
     const data = await res.json();
 
-    dispatch({type: 'GET_PERSON_INFO', payload: data});
+    dispatch({ type: 'GET_PERSON_INFO', payload: data });
   };
 
   // Get person movies
@@ -152,13 +152,13 @@ export const MovieProvider = ({children}) => {
 
     const data = await response.json();
 
-    dispatch({type: 'GET_PERSON_MOVIES', payload: data});
+    dispatch({ type: 'GET_PERSON_MOVIES', payload: data });
   };
 
   // Set search query
 
   const setQuery = (text) => {
-    dispatch({type: 'SET_QUERY', payload: text});
+    dispatch({ type: 'SET_QUERY', payload: text });
   };
 
   // Search movies
@@ -170,15 +170,15 @@ export const MovieProvider = ({children}) => {
       `${url}/search/movie?api_key=${key}&language=${state.lang}&query=${query}&include_adult=false`
     );
 
-    const {results} = await res.json();
+    const { results } = await res.json();
 
-    dispatch({type: 'SEARCH_MOVIES', payload: results});
+    dispatch({ type: 'SEARCH_MOVIES', payload: results });
   };
 
   // Change language
 
   const changeLang = () => {
-    dispatch({type: 'CHANGE_LANG'});
+    dispatch({ type: 'CHANGE_LANG' });
   };
 
   return (

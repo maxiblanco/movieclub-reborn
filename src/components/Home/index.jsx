@@ -1,10 +1,10 @@
 import React from 'react';
 // Chakra UI
-import {Flex, Box, Grid, Heading, Text, Skeleton} from '@chakra-ui/core';
+import { Flex, Box, Grid, Heading, Text, Skeleton } from '@chakra-ui/core';
 // Components
 import MovieCard from '../MovieCard';
 
-const Home = ({movies, loading}) => {
+const Home = ({ movies, loading }) => {
   return (
     <Grid
       templateColumns={[
@@ -28,7 +28,7 @@ const Home = ({movies, loading}) => {
           Emotional, exciting and unexpected.
         </Text>
       </Flex>
-      {movies.map(({id, title, poster_path: posterPath}) => (
+      {movies.map(({ id, title, poster_path: posterPath }) => (
         <Skeleton isLoaded={!loading} key={id}>
           <MovieCard key={id} title={title} posterPath={posterPath} />
         </Skeleton>
