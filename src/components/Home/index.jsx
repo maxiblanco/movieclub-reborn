@@ -10,9 +10,10 @@ const Home = ({movies, loading}) => {
       templateColumns={[
         'repeat(auto-fill, minmax(150px, 1fr) )',
         'repeat(auto-fill, minmax(200px, 1fr) )',
-        'repeat(auto-fill, minmax(250px, 1fr) )',
+        'repeat(auto-fill, minmax(220px, 1fr) )',
       ]}
-      gap="40px"
+      gap="2rem"
+      mx="2rem"
     >
       <Flex
         direction="column"

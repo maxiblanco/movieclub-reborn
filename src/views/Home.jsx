@@ -23,25 +23,15 @@ const HomeView = () => {
         height="100vh"
         mx="auto"
         position="relative"
-        bgImage="url(https://image.tmdb.org/t/p/original/xXBnM6uSTk6qqCf0SRZKXcga9Ba.jpg)"
-        bgSize="150%"
+        bgImage=" url(https://image.tmdb.org/t/p/original/xXBnM6uSTk6qqCf0SRZKXcga9Ba.jpg)"
+        boxShadow="inset 0px 0px 10rem 8rem rgba(0,0,0,0.9), inset 0px 0px 9rem 6rem rgba(0,0,0,0.6), inset 0px 0px 6rem 4rem rgba(0,0,0,0.4), inset 0px 0px 6rem 5rem rgba(0,0,0,0.9)"
+        backgroundSize="cover"
+        backgroundPosition="center"
         zIndex={0}
-        boxShadow="0px 0px 400px #000 inset"
       >
         <Box pt={4}>
           <Navbar />
         </Box>
-
-        {/*         <Image
-          src="https://image.tmdb.org/t/p/original/xXBnM6uSTk6qqCf0SRZKXcga9Ba.jpg" 
-           src={`https://image.tmdb.org/t/p/original/${movies.backdrop_path}`}
-          width="100%"
-          border="none"
-          position="absolute"
-          top="0"
-          left="0"
-          zIndex="-1"
-        /> */}
       </Box>
 
       {/* TODO: Fix grid to overlay image */}
