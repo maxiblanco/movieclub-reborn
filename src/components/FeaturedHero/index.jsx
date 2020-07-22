@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import { MovieContext } from '/context/movieContext';
+import ReactPlayer from 'react-player/lazy';
 // Charkra UI
 import {
   Box,
@@ -19,7 +20,7 @@ const FeaturedHero = ({ featured: { id, title, overview } }) => {
   useEffect(() => {
     getMovieTrailer(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [singleMovieTrailer, getMovieTrailer]);
+  }, [id]);
 
   return (
     <Stack direction="column" maxWidth="70ch">
@@ -31,14 +32,11 @@ const FeaturedHero = ({ featured: { id, title, overview } }) => {
       </Text>
       <Divider py={4} borderWidth="4px" />
       <AspectRatioBox ratio={16 / 9}>
-        <Box
-          as="iframe"
-          title="naruto"
-          modestbranding={1}
-          constrols={0}
-          src={`https://www.youtube.com/embed/${singleMovieTrailer.key}`}
-          allowFullScreen
-        />
+        <Box boxShadow="0px 0px 1rem 1rem rgba(0,0,0,0.7)">
+          <ReactPlayer
+            url={`https://www.youtube.com/embed/${singleMovieTrailer.key}`}
+          />
+        </Box>
       </AspectRatioBox>
     </Stack>
   );

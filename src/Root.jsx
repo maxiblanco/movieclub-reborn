@@ -1,7 +1,8 @@
 import React from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import App from './App';
-import {MovieProvider} from '/context/movieContext.js';
+import SearchView from '/views/Search.jsx';
+import { MovieProvider } from '/context/movieContext.js';
 import ThemeProvider from './theme';
 
 const Root = () => {
@@ -10,7 +11,8 @@ const Root = () => {
       <MovieProvider>
         <BrowserRouter>
           <Switch>
-            <Route path="/" component={App} />
+            <Route exact path="/" component={App} />
+            <Route path="/search" component={SearchView} />
           </Switch>
         </BrowserRouter>
       </MovieProvider>

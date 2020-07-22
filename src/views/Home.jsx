@@ -14,7 +14,12 @@ const HomeView = () => {
 
   useEffect(() => {
     getMovies();
-    setFeatured(movies[0]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (movies !== []) setFeatured(movies[0]);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movies]);
 
@@ -25,7 +30,11 @@ const HomeView = () => {
         height="100vh"
         mx="auto"
         position="relative"
-        bgImage=" url(https://image.tmdb.org/t/p/original/xXBnM6uSTk6qqCf0SRZKXcga9Ba.jpg)"
+        bgImage={
+          featured
+            ? `url(https://image.tmdb.org/t/p/original${featured.backdrop_path})`
+            : 'url(https://image.tmdb.org/t/p/original/xXBnM6uSTk6qqCf0SRZKXcga9Ba.jpg)'
+        }
         boxShadow="inset 0px 0px 10rem 8rem rgba(0,0,0,0.9), inset 0px 0px 9rem 6rem rgba(0,0,0,0.6), inset 0px 0px 6rem 4rem rgba(0,0,0,0.4), inset 0px 0px 6rem 5rem rgba(0,0,0,0.9)"
         backgroundSize="cover"
         backgroundPosition="center"
@@ -34,8 +43,8 @@ const HomeView = () => {
         <Box pt={4}>
           <Navbar />
         </Box>
-        <Flex w="100%" h="100%" align="center" justify="flex-end" mt="-2rem">
-          {featured && <FeaturedHero featured={featured} />}
+        <Flex w="100%" h="90%" align="center" justify="flex-end" mt="-2rem">
+          {featured ? <FeaturedHero featured={featured} /> : ''}
         </Flex>
       </Box>
 
